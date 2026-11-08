@@ -1,0 +1,3 @@
+Pillow>=10.0
+# Windows 下支持从资源管理器把图片直接拖进自定义拼接格
+tkinterdnd2>=0.4

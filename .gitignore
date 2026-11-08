@@ -1,0 +1,13 @@
+.venv/
+__pycache__/
+*.pyc
+sample_photos/
+
+# Windows 打包中间产物（build_windows.sh 默认放在 Windows 临时目录）
+build/
+dist/
+*.spec
+app_icon.ico
+
+# Claude Code 本地配置（不入库）
+.claude/settings.local.json

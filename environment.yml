@@ -1,0 +1,8 @@
+name: pic-splice
+channels:
+  - conda-forge
+dependencies:
+  - python=3.13
+  - pillow
+  # 需要 xft 构建，Tk 才能通过 fontconfig 显示中文
+  - tk=8.6.13=xft*
