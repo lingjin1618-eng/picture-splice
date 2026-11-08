@@ -18,7 +18,7 @@
 | 输出 | 1800 × 1200 px，300 dpi，3:2，约 15.24 × 10.16 cm；JPEG（质量 98、4:4:4）或 PNG |
 | 核心特点 | 本地离线、不压缩原图、导出时按原文件全分辨率重拼、智能分组、自动旋转、后台导入/导出 |
 | 当前形态 | 单文件 `pic_splicer.py`；Linux/WSL 用 `./run.sh`；Windows 桌面版为 `C:\Users\Administrator\Desktop\Picture Splice.exe` |
-| 版本状态 | v1.0 功能快照；无 git 仓库、无自动化测试、无版本号/安装包 |
+| 版本状态 | v1.0 功能快照；已托管到 GitHub（`lingjin1618-eng/picture-splice`，MIT），仍无自动化测试、无版本号/安装包 |
 | 主要入口 | `PhotoSplicerApp`（`pic_splicer.py:1943`）和 `main()`（`pic_splicer.py:5780`） |
 | 最重要约束 | 原图只读；界面只缓存 1600 px 预览图；导出时才重新读取原文件；Tk 控件只在主线程操作 |
 
@@ -41,13 +41,15 @@
 | `build_windows.sh` | WSL 入口：把源码复制到 Windows 临时目录，调用 PowerShell 打包，把 exe 放到桌面 |
 | `build_windows.ps1` | 真正的 PyInstaller 打包脚本（Windows 侧执行） |
 | `build_icon.py` | 用 Pillow 生成 16–256 px 多尺寸 `.ico` 图标 |
-| `README.md` | 面向用户的使用说明（220 行） |
+| `README.md` | 面向用户的使用说明（含功能徽章、界面截图、运行/使用方法、隐私说明） |
 | `PROJECT_SUMMARY.md` | 本文档，面向后续开发/升级 |
+| `LICENSE` | MIT 许可证（2026 lingjin1618-eng） |
+| `docs/screenshot.png` | README 使用的界面截图（示例照片为生成的示意图） |
 | `.venv/` | 本地开发环境（Python 3.13.18、Pillow 13.0.0、Tk 8.6），已在 `.gitignore` 中 |
 | `.claude/settings.local.json` | 开发期积累的 Bash 权限白名单（运行、截图、PowerShell、测试脚本等） |
-| `.gitignore` | 忽略 `.venv/`、`__pycache__/`、`sample_photos/`、构建产物、`app_icon.ico` |
+| `.gitignore` | 忽略 `.venv/`、`__pycache__/`、`sample_photos/`、构建产物、`app_icon.ico`、`.claude/settings.local.json` |
 
-当前目录**不是 git 仓库**，因此没有提交历史；本文的“迭代脉络”是根据现有代码、README、文件时间戳和开发记忆重建的。
+项目已于 2026-11-08 初始化 git 仓库（首次提交 `ce5997f`）并推送到 GitHub：<https://github.com/lingjin1618-eng/picture-splice>。本文的“迭代脉络”是根据现有代码、README、文件时间戳和开发记忆重建的。
 
 ### 1.3 当前版本边界（重要）
 
@@ -940,8 +942,9 @@ export_all / export_current_page
 5. **没有日志**
    - 建议写本地日志（导入失败、导出失败、异常堆栈），方便用户反馈。
 
-6. **没有 git**
-   - 当前目录不是 git 仓库；建议 `git init`，至少打 tag `v1.0`，后续每次升级提交并更新本文“版本记录”。
+6. **版本控制**
+   - 已完成：`git init` 并推送到 GitHub（`lingjin1618-eng/picture-splice`）。
+   - 建议打 tag `v1.0`；后续每次升级提交并更新本文“版本记录”。
 
 7. **打包**
    - `--onefile` 启动慢、每次解压；可评估 `--onedir` + 安装包；exe 无签名，SmartScreen 提示；没有自动更新。
